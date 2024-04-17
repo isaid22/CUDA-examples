@@ -95,3 +95,6 @@ cudaMemcpy(&y, dev_y, sizeof(float), cudaMemcpyDeviceToHost)
 ```
 
 Since we have UMP in CUDA now, we no longer need to explicitly copy data between GPU and host.
+
+## Reference
+[CUDA Memory Management](https://developer.ridgerun.com/wiki/index.php/NVIDIA_CUDA_Memory_Management)
