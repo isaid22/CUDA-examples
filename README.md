@@ -11,3 +11,4 @@ This repo contains examples for general CUDA programming in C. Examples will be 
 8. [Set up blocks configuration](./Blocks/use-blocks.md)
 9. [Use mamory management to allocate memory for kernel](./Memory-for-kernel/mem-kernel.md)
 10. [Use grid-stride loop to manipulate large or arbitrary array ](./Grid-stride/grid-stride.md)
+11. [Use Unified Memory Programming to share data between GPU and CPU](./UMP/unified_memory.md)
