@@ -3,6 +3,10 @@ It the simplest term, "Unified Memory Programming" (UMP), or simply "Unified Mem
 
 The example source code is in [here.](unified_memory.cu)
 
+In some cases, when your applications requires large data transfer between CPU and GPU, or that GPU requires frequent data access. An option to help with data transfer latency may be via `cudaMemPrefetchAsync` API. Under the hood, this API prefetch data from host memory and transfer it to the GPU memory. This API call has to take place before the kernel call.
+
+The example source code for using `cudaMemPrefetchAsync` [is in here](unified_memory_prefetch.cu)
+
 ## Instruction
 
 To run the source code, go to `UMP` directory, and first compile the source code into an executable:
@@ -95,6 +99,19 @@ cudaMemcpy(&y, dev_y, sizeof(float), cudaMemcpyDeviceToHost)
 ```
 
 Since we have UMP in CUDA now, we no longer need to explicitly copy data between GPU and host.
+
+### Prefetch
+To try out if prefetching memory helps with a particular CUDA program, before the kernel call, insert the following code:
+
+```
+ int device = -1; // let runtime pick the GPU
+ cudaGetDevice(&device); // Retrieves the current device index
+ cudaMemPrefetchAsync(x, N*sizeof(float), device, NULL); // Prefetches data to the selected device
+ cudaMemPrefetchAsync(y, N*sizeof(float), device, NULL); // Prefetches data to the same selected device
+ ```
+
+ By setting `device` to -1, you explicitly let CUDA runtime to determine the GPU to use for this application. 
+
 
 ## Reference
 [CUDA Memory Management](https://developer.ridgerun.com/wiki/index.php/NVIDIA_CUDA_Memory_Management)
