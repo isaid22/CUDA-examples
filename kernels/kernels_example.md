@@ -23,8 +23,6 @@ q is number of threads
 
 Blocks are the basic units that execute in parallel in a GPU program.
 
-The source code for this exercise is [here](./kernel-demo.cu).
-
 **Note** 
 
 `__global__` is often confused with another qualifier `__device__`. In either case, such qualifier designated the function fo be executed in GPU, and therefore the fonctions are kernel functions. However, `__global__` function can only be called from the CPU. This means that typically, there is a `main` program that will call and execute the `__global__` function. 

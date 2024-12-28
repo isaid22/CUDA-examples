@@ -5,16 +5,16 @@ From a data structure perspective, an array is the most efficient data structure
 
 ## Instruction
 
-The source code is in `Memory-Allocation` directory.
+The source code for this exercise is [here](./allocation.cu).
 
-To run the source code, go to `Memory-Allocation` directory:
+To run the source code, make sure you are in `Memory-Allocation` directory and then compile the code:
 ```
 nvcc -o allcation allocation.cu
 ```
 
 Then in the same directory, run the executable:
 ```
-allocation
+./allocation
 ```
 
 and expect output such as this:
