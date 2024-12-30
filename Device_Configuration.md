@@ -29,11 +29,15 @@ Compute capability: 8.9
 ##### MEMORY INFO FOR DEVICE 0 ---
 Total global memory: 8328511488
 Total constant memory: 65536
+Max shared memory in byte a single block may use: 49152
+Total 32-bits registers per block: 65536
+Number of threads in a warp: 32
+Max pitch allowed for memory copies in bytes: 2147483647
 ##### MP INFORMATION FOR DEVICE 0 ---
 Multiprocessor count: 24
 Max threads per block: 1024
 Max threads dimensions: (1024, 1024, 64)
-Max grid dimensions: (2147483647, 65535, 65535)https://developer.nvidia.com/cuda-gpus
+Max grid dimensions: (2147483647, 65535, 65535)
 ```
 
 The os system is:
