@@ -27,8 +27,8 @@ Device count: 1
 Name: NVIDIA GeForce RTX 4060 Laptop GPU
 Compute capability: 8.9
 ##### MEMORY INFO FOR DEVICE 0 ---
-Total global memory: 8328511488
-Total constant memory: 65536
+Total global memory in bytes: 8328511488
+Total constant memory in bytes: 65536
 Max shared memory in byte a single block may use: 49152
 Total 32-bits registers per block: 65536
 Number of threads in a warp: 32

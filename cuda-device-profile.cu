@@ -13,8 +13,8 @@ int main(void) {
         printf("Compute capability: %d.%d\n", prop.major, prop.minor);
 
         printf("##### MEMORY INFO FOR DEVICE %d ---\n", i);
-        printf("Total global memory: %ld\n", prop.totalGlobalMem);
-        printf("Total constant memory: %ld\n", prop.totalConstMem);
+        printf("Total global memory in bytes: %ld\n", prop.totalGlobalMem);
+        printf("Total constant memory in bytes: %ld\n", prop.totalConstMem);
         printf("Max shared memory in byte a single block may use: %ld\n", prop.sharedMemPerBlock);
         printf("Total 32-bits registers per block: %d\n", prop.regsPerBlock);
         printf("Number of threads in a warp: %d\n", prop.warpSize);
