@@ -13,13 +13,13 @@ __global__ void add( int *a, int *b, int *c ) {
 
 
 int main( void ) {
-    int a[N], b[N], c[N];
-    int *dev_a, *dev_b, *dev_c;
+    int a[N], b[N], c[N]; // Each array holds N integers
+    int *dev_a, *dev_b, *dev_c; //pointers declared to point to integer array's base address
 
     
     // allocate the memory on the GPU
-    HANDLE_ERROR( cudaMalloc( &dev_a, N * sizeof(int) ) );
-    HANDLE_ERROR( cudaMalloc( &dev_b, N * sizeof(int) ) );
+    HANDLE_ERROR( cudaMalloc( &dev_a, N * sizeof(int) ) ); // Allocate continuous block memory, integer is four bytes.
+    HANDLE_ERROR( cudaMalloc( &dev_b, N * sizeof(int) ) ); // Pointer to a pointer indicates address of the allocated memory on the device. 
     HANDLE_ERROR( cudaMalloc( &dev_c, N * sizeof(int) ) );
 
     // fill the arrays 'a' and 'b' on the CPU

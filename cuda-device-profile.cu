@@ -5,6 +5,7 @@ int main(void) {
     cudaDeviceProp prop;
 
     int count;
+    int total_CUDA_cores = 3072; // https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4060-4060ti/
     cudaGetDeviceCount( &count);
     printf("Device count: %d\n", count);
     for (int i=0; i<count; i++) {
@@ -25,7 +26,11 @@ int main(void) {
         printf("Max threads per block: %d\n", prop.maxThreadsPerBlock);
         printf("Max threads dimensions: (%d, %d, %d)\n", prop.maxThreadsDim[0], prop.maxThreadsDim[1], prop.maxThreadsDim[2]);
         printf("Max grid dimensions: (%d, %d, %d)\n", prop.maxGridSize[0], prop.maxGridSize[1], prop.maxGridSize[2]);
+        printf("Total CUDA Cores: %d\n", total_CUDA_cores);
+        printf("CUDA Cores per SM: %d\n", total_CUDA_cores / prop.multiProcessorCount);
         
+
+    
 
     }
 }
