@@ -38,6 +38,8 @@ Multiprocessor count: 24
 Max threads per block: 1024
 Max threads dimensions: (1024, 1024, 64)
 Max grid dimensions: (2147483647, 65535, 65535)
+Total CUDA Cores: 3072
+CUDA Cores per SM: 128
 ```
 
 The os system is:
