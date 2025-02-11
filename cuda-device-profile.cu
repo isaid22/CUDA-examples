@@ -20,7 +20,21 @@ int main(void) {
         printf("Total 32-bits registers per block: %d\n", prop.regsPerBlock);
         printf("Number of threads in a warp: %d\n", prop.warpSize);
         printf("Max pitch allowed for memory copies in bytes: %ld\n", prop.memPitch);     
-
+        if (prop.deviceOverlap) {
+            printf("Device handles CUDA streaming overlap and speedup. \n");
+        } else {
+            printf("Device does not handle overlap, no CUDA streams capabilities. \n");
+        };
+        if (prop.concurrentKernels) {
+            printf("Device can execute multiple kernels within the same context simultaneously. \n");
+        } else {
+            printf("Device cannot execute multiple kernels within the same context simultaneously. \n");
+        }
+        if (prop.integrated) {
+            printf("Device i an integrated GPU and not standalone. \n");
+        } else {
+            printf("Device is a discrete GPU. \n");
+        }
         printf("##### MP INFORMATION FOR DEVICE %d ---\n", i);
         printf("Multiprocessor count: %d\n", prop.multiProcessorCount);
         printf("Max threads per block: %d\n", prop.maxThreadsPerBlock);
