@@ -14,3 +14,4 @@ This repo contains examples for general CUDA programming in C. Examples will be 
 11. [Use Unified Memory Programming to share data between GPU and CPU](./UMP/unified_memory.md)
 12. [Proof of contiguous memory allocation](./Memory-Allocation/memory-allocation.md)
 13. [CUDA Streaming](./Streams/streams.md)
+14. [Dot Product](./Dot-Product/dot-product.md)
