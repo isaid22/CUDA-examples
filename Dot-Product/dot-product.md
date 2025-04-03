@@ -7,7 +7,7 @@ nvcc -O3 --use_fast_math \
      -gencode=arch=compute_90,code=sm_90 \
      --ptxas-options=-v,-O3 \
      -Xptxas -dlcm=ca \
-     -o dotdot-product-fix dot-product.cu
+     -o dot-product-fix dot-product.cu
 ```
 
 ### Key Changes & Explanations
@@ -22,7 +22,7 @@ nvcc -O3 --use_fast_math \
 - `-O3` enables highest optimization level
 
 #### 3. Architecture Flags
-- `-gencode=arch=compute_89,code=sm_89`: Targets RTX 4060 (Ampere architecture)
+- `-gencode=arch=compute_89,code=sm_89`: Targets RTX 4060 (Ada Lovelace architecture)
 - `-gencode=arch=compute_90,code=sm_90`: Optional forward compatibility for future GPUs
 
 #### 4. Fast Math & Caching
