@@ -1,6 +1,6 @@
 # terraform.tfvars
 
-key_name           = "
+key_name           = "<YOUR KEY NAME>"
 tags_name           = "g5-tf-param"
 subnet_id          = "subnet-<YOUR SUBNET ID>"
 security_group_id  = "sg-<YOUR SECURITY GROUP ID>"
