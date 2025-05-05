@@ -7,7 +7,7 @@ data "aws_security_group" "my_sg" {
   id = var.security_group_id  # Your existing SG ID
 }
 
-resource "aws_instance" "g5_8xlarge" {
+resource "aws_instance" "my_ec2" {
   ami           = var.ami_id  # Removed duplicate "ami-" prefix
   instance_type = var.instance_type  # Fixed from g5.xlarge to g5.8xlarge
   key_name      = var.key_name   # Key pair name
