@@ -15,3 +15,4 @@ This repo contains examples for general CUDA programming in C. Examples will be 
 12. [Proof of contiguous memory allocation](./Memory-Allocation/memory-allocation.md)
 13. [CUDA Streaming](./Streams/streams.md)
 14. [Dot Product](./Dot-Product/dot-product.md)
+15. [Terraform Deployment](./Terraform/README.md)

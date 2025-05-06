@@ -9,7 +9,7 @@ data "aws_security_group" "my_sg" {
 
 resource "aws_instance" "my_ec2" {
   ami           = var.ami_id  # Specify AMI
-  instance_type = var.instance_type  # Instance type
+  instance_type = var.instance_type  # Specify instance type
   key_name      = var.key_name   # Key pair name
 
   # Network config
@@ -29,9 +29,9 @@ resource "aws_instance" "my_ec2" {
               #!/bin/bash
               # Update and install Docker
               apt-get update -y
-              apt-get install -y docker.io
 
               apt install nvtop
+              apt-get install -y docker.io
 
               # Start Docker service
               systemctl start docker
@@ -39,7 +39,6 @@ resource "aws_instance" "my_ec2" {
 
               # create a docker network
               docker network create vllm-net
-
               # Pull Docker image
               docker pull ${var.docker_image}
             EOF
