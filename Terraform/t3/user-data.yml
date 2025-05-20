@@ -1,0 +1,14 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+packages:
+  - docker.io
+  - openjdk-21-jdk
+  - wget
+
+runcmd:
+  - echo "Runcmd is executing!" >> /tmp/runcmd.log 2>&1
+  - wget -P ${install_dir} https://downloads.apache.org/kafka/3.7.2/kafka_2.13-3.7.2.tgz >> /tmp/runcmd.log 2>&1
+  - echo "##### wget complete!" >> /tmp/runcmd.log 2>&1
+  - tar -xvf ${install_dir}/kafka_2.13-3.7.2.tgz --directory ${install_dir}   >> /tmp/runcmd.log 2>&1
+  - echo "##### tar kafka complete! Extracted to ${install_dir}/kafka_2.13-3.7.2" >> /tmp/runcmd.log 2>&1
