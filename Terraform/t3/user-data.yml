@@ -12,3 +12,5 @@ runcmd:
   - echo "##### wget complete!" >> /tmp/runcmd.log 2>&1
   - tar -xvf ${install_dir}/kafka_2.13-3.7.2.tgz --directory ${install_dir}   >> /tmp/runcmd.log 2>&1
   - echo "##### tar kafka complete! Extracted to ${install_dir}/kafka_2.13-3.7.2" >> /tmp/runcmd.log 2>&1
+  - chown -R ubuntu:ubuntu ${install_dir}/kafka_2.13-3.7.2 >> /tmp/runcmd.log 2>&1
+  - echo "##### Changed ownership of Kafka directory to ubuntu:ubuntu" >> /tmp/runcmd.log 2>&1
