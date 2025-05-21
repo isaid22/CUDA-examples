@@ -1,6 +1,6 @@
 ## Step 1: Prerequisites
 
-It is recommended to use t[Terraform example](../Terraform/t3/) to provion an instance to satisfy these prerequisites.
+It is recommended to use [Terraform example](../Terraform/t3/) to provion an instance to satisfy these prerequisites.
 1. Install Java (JDK 11+)
 
 ```
