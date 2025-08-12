@@ -5,12 +5,19 @@ packages:
   - docker.io
   - openjdk-21-jdk
   - wget
+  - jq
+  - maven
+  - tree
 
 runcmd:
   - echo "Runcmd is executing!" >> /tmp/runcmd.log 2>&1
-  - wget -P ${install_dir} https://downloads.apache.org/kafka/3.7.2/kafka_2.13-3.7.2.tgz >> /tmp/runcmd.log 2>&1
+  - wget -P ${install_dir} https://dlcdn.apache.org/kafka/4.0.0/kafka_2.13-4.0.0.tgz >> /tmp/runcmd.log 2>&1
   - echo "##### wget complete!" >> /tmp/runcmd.log 2>&1
-  - tar -xvf ${install_dir}/kafka_2.13-3.7.2.tgz --directory ${install_dir}   >> /tmp/runcmd.log 2>&1
-  - echo "##### tar kafka complete! Extracted to ${install_dir}/kafka_2.13-3.7.2" >> /tmp/runcmd.log 2>&1
-  - chown -R ubuntu:ubuntu ${install_dir}/kafka_2.13-3.7.2 >> /tmp/runcmd.log 2>&1
+  - tar -xvf ${install_dir}/kafka_2.13-4.0.0.tgz --directory ${install_dir}   >> /tmp/runcmd.log 2>&1
+  - echo "##### tar kafka complete! Extracted to ${install_dir}/kafka_2.13-4.0.0" >> /tmp/runcmd.log 2>&1
+  - chown -R ubuntu:ubuntu ${install_dir}/kafka_2.13-4.0.0 >> /tmp/runcmd.log 2>&1
   - echo "##### Changed ownership of Kafka directory to ubuntu:ubuntu" >> /tmp/runcmd.log 2>&1
+  - echo "##### Starting Maven project generation" >> /tmp/runcmd.log 2>&1
+  - mvn archetype:generate -DarchetypeGroupId=org.apache.kafka -DarchetypeArtifactId=streams-quickstart-java -DarchetypeVersion=4.0.0 -DgroupId=streams.examples -DartifactId=streams-quickstart -Dversion=0.1 -Dpackage=myapps >> /tmp/runcmd.log 2>&1
+  - echo "##### Maven project generated" >> /tmp/runcmd.log 2>&1
+  - echo "##### System ready" >> /tmp/runcmd.log 2>&1
