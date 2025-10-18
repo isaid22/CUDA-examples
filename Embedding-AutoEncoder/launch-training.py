@@ -59,7 +59,7 @@ def main(input_args):
     train_ds = ModelStructure.TitanicAutoencoderDataset(X_train)
     test_ds = ModelStructure.TitanicAutoencoderDataset(X_test)
 
-    train_model(X_train, X_test, train_ds, test_ds, latent_dim, device, config)
+    train_model(X_train, X_test, train_ds, test_ds, latent_dim, device, config, learning_rate)
 
     return 
 

@@ -15,7 +15,7 @@ from ModelStructure import TitanicAutoencoder, TitanicAutoencoderDataset
 from utility import plot_loss_curve, get_gpu_utilization
 import LoadData
 
-def train_model(X_train, X_test, train_ds, test_ds, latent_dim, device, config):
+def train_model(X_train, X_test, train_ds, test_ds, latent_dim, device, config, learning_rate):
 
 
         
@@ -23,7 +23,7 @@ def train_model(X_train, X_test, train_ds, test_ds, latent_dim, device, config):
     LATENT_DIM = latent_dim  # Set the latent dimension for the autoencode
     print(f"Using input dimension: {X_train.shape[1]}, latent dimension: {LATENT_DIM}")
     model = TitanicAutoencoder(input_dim=X_train.shape[1], latent_dim=LATENT_DIM).to(device)
-    optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
+    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', patience=5, factor=0.5) 
     # This will halve the learning rate if avg_test_loss doesn't improve for 5 epochs.
 
@@ -153,7 +153,21 @@ def train_model(X_train, X_test, train_ds, test_ds, latent_dim, device, config):
                 'latent_dim': LATENT_DIM 
                 }, f"{CHECKPOINT_DIR}/autoencoder_epoch{epoch+1}.pt")
         
+        # Debug scheduler state before stepping
+        old_lr = current_lr
         scheduler.step(avg_test_loss) # Adjust learning rate based on test loss
+        new_lr = optimizer.param_groups[0]['lr']
+        
+        # Log scheduler activity
+        if new_lr != old_lr:
+            print(f"🔄 Learning rate changed from {old_lr:.6f} to {new_lr:.6f}")
+            writer.add_scalar("Scheduler/LR_Changes", new_lr, epoch)
+        
+        # Log scheduler's internal state (number of bad epochs)
+        if hasattr(scheduler, 'num_bad_epochs'):
+            writer.add_scalar("Scheduler/Bad_Epochs_Count", scheduler.num_bad_epochs, epoch)
+            if scheduler.num_bad_epochs > 0:
+                print(f"⚠️  Scheduler patience: {scheduler.num_bad_epochs}/{scheduler.patience} epochs without improvement")
 
     # ✅ After training — log embeddings to projector
     with torch.no_grad():

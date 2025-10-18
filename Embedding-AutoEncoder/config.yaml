@@ -5,7 +5,7 @@ model:
   latent_dim: 8
 
 training:
-  batch_size: 256
+  batch_size: 512
   learning_rate: 0.001
   num_epochs: 500
   starting_epoch: 0
@@ -16,8 +16,8 @@ training:
     - sgd
     - rmsprop
   loss_fn: mse
-  num_workers: 1 
-  resume_training_from_checkpoint: False
+  num_workers: 4 
+  resume_training_from_checkpoint: True
 
 starting_epoch: 0
 
@@ -33,7 +33,7 @@ data:
 
 
 checkpoint:
-  path: checkpoints_2025-08-03_18-14-41/autoencoder_epoch500.pt 
+  path: checkpoints_2025-10-17_22-29-41/autoencoder_epoch500.pt 
   save_every: 5
 
 
