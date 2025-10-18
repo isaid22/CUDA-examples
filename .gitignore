@@ -1,3 +1,25 @@
+# Model checkpoints and training artifacts
 Embedding-AutoEncoder/checkpoints*/
-Embedding-AutoEncoder/runs/autoencoder*/
-Embedding-AutoEncoder/__pycache__*/
+Embedding-AutoEncoder/runs/
+Embedding-AutoEncoder/__pycache__/
+
+# PyTorch model files
+*.pt
+*.pth
+*.ckpt
+
+# TensorBoard logs
+**/runs/
+**/logs/
+
+# Large data files
+*.csv
+*.h5
+*.hdf5
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Python cache
+__pycache__/
+*.pyc
