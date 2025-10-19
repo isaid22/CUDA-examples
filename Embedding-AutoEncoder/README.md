@@ -86,3 +86,41 @@ Learning rate is also captured in TensorBoard. Go to **SCALARS** tab, find **LR*
 2. For training/TensorBoard files: `git lfs pull`
 3. For specific models only: `git lfs pull --include="*.pt"`
 
+## Clone this repo
+When a user do a `git clone ` to this repo, user will get the following:
+
+```
+Embedding-AutoEncoder/
+├── runs/                    ← Directory EXISTS
+│   └── autoencoder_*/       ← Subdirectories EXIST
+│       └── events.out.*     ← Files EXIST (but as small pointers)
+└── checkpoints_*/           ← Directory EXISTS
+    └── *.pt                 ← Files EXIST (but as small pointers)
+```
+
+With LFS, files exist but contain only small pointer text.
+
+### Pointer file
+As an example, when you clone the repo and look at a checkpoint file:
+
+```
+$ cat checkpoints_2025-10-17_21-43-09/autoencoder_epoch1.pt
+version https://git-lfs.github.com/spec/v1
+oid sha256:4d7a214614ab2935c...
+size 1048576
+```
+
+This is just a pointer to the actual large file stored in LFS.
+
+### Getting actual large files:
+
+You need to run:
+
+```
+git lfs pull                    # Downloads ALL LFS files
+# OR
+git lfs pull --include="*.pt"   # Downloads only PyTorch files
+# OR  
+git lfs pull --include="runs/**" # Downloads only TensorBoard files
+```
+Then you will see either `runs/` or `checkpoints/` directories with all the large files after you do `git lfs pull`.
