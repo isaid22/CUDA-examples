@@ -81,4 +81,8 @@ Basically, this change in learning rate is applied after each epoch with schedul
 
 Learning rate is also captured in TensorBoard. Go to **SCALARS** tab, find **LR** in the metrics list and you will see step-wise values of the learning rate.
 
+## Setup
+1. Clone the repository: `git clone <repo-url>`
+2. For training/TensorBoard files: `git lfs pull`
+3. For specific models only: `git lfs pull --include="*.pt"`
 
