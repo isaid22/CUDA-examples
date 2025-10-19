@@ -1,6 +1,4 @@
-# Model checkpoints and training artifacts
-Embedding-AutoEncoder/checkpoints*/
-Embedding-AutoEncoder/runs/
+# Python cache files
 Embedding-AutoEncoder/__pycache__/
 
 # PyTorch model files
